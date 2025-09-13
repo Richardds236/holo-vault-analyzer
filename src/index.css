@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic AMM Analytics Design System - Cyberpunk/Holographic Theme
+All colors MUST be HSL for proper theming.
+*/
+
+@layer base {
+  :root {
+    /* Core Cyberpunk Background */
+    --background: 240 15% 6%;
+    --foreground: 194 100% 85%;
+
+    /* Holographic Card Elements */
+    --card: 240 20% 8%;
+    --card-foreground: 194 100% 90%;
+
+    /* Popover/Modal Elements */
+    --popover: 240 25% 10%;
+    --popover-foreground: 194 100% 85%;
+
+    /* Neon Blue Primary (FHE Badge, Key Actions) */
+    --primary: 194 100% 50%;
+    --primary-foreground: 240 15% 6%;
+
+    /* Electric Purple Secondary */
+    --secondary: 280 100% 35%;
+    --secondary-foreground: 194 100% 90%;
+
+    /* Subtle Glow Elements */
+    --muted: 240 20% 15%;
+    --muted-foreground: 194 50% 60%;
+
+    /* Accent Cyan for Highlights */
+    --accent: 180 100% 45%;
+    --accent-foreground: 240 15% 6%;
+
+    /* Error/Alert States */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 194 100% 90%;
+
+    /* Borders and Inputs with Glow */
+    --border: 194 80% 25%;
+    --input: 240 25% 12%;
+    --ring: 194 100% 50%;
+
+    /* Custom Holographic Gradients */
+    --gradient-holographic: linear-gradient(135deg, hsl(194 100% 50%), hsl(280 100% 35%));
+    --gradient-data: linear-gradient(90deg, hsl(194 100% 30%), hsl(180 100% 45%));
+    --gradient-bg: radial-gradient(ellipse at center, hsl(240 20% 10%) 0%, hsl(240 15% 6%) 100%);
+
+    /* Glow Effects */
+    --glow-primary: 0 0 20px hsl(194 100% 50% / 0.5);
+    --glow-accent: 0 0 15px hsl(180 100% 45% / 0.3);
+    --glow-data: 0 0 10px hsl(194 100% 30% / 0.4);
+
+    /* Animation Timing */
+    --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-holographic: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  /* Holographic Effects */
+  .holographic-border {
+    border: 1px solid transparent;
+    background: linear-gradient(var(--card), var(--card)) padding-box,
+                var(--gradient-holographic) border-box;
+  }
+  
+  .holographic-text {
+    background: var(--gradient-holographic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .glow-data {
+    box-shadow: var(--glow-data);
+  }
+  
+  /* Animated Holographic Pulse */
+  .holographic-pulse {
+    animation: holographic-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes holographic-pulse {
+    0% {
+      box-shadow: 0 0 5px hsl(194 100% 50% / 0.3);
+    }
+    100% {
+      box-shadow: 0 0 20px hsl(194 100% 50% / 0.8), 0 0 30px hsl(180 100% 45% / 0.4);
+    }
+  }
+  
+  /* Data Scan Animation */
+  .data-scan {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .data-scan::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(194 100% 50% / 0.2), transparent);
+    animation: data-scan 3s ease-in-out infinite;
+  }
+  
+  @keyframes data-scan {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+}
